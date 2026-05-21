@@ -10,7 +10,7 @@ Objectif: découvrir les SGBD objet et relationnel-objet.
 
 Création du compte (À exécuter en tant que SYSDBA sur la base FREEPDB1):
 ```SQL
-CREATE USER etudiant IDENTIFIED BY CoursObjet2026!;
+CREATE USER etudiant IDENTIFIED BY "CoursObjet2026!";
 GRANT CONNECT, RESOURCE, CREATE TYPE TO etudiant;
 ALTER USER etudiant QUOTA UNLIMITED ON USERS;
 ```
@@ -45,4 +45,13 @@ ALTER USER sys IDENTIFIED BY "MonPasswordSecurise123!";
 EXIT;
 ```
 
+## Trouver le détail d'une erreur
+Exemple, erreur sur la fonction "CALCULER_ANCIENNETE"
+```SQL
+SELECT text FROM user_errors WHERE name = 'CALCULER_ANCIENNETE';
+```
 # Utilisation de la base PostgreSQL
+
+Outils possible pour exécuter des requêtes:
+- pgAdmin (localhost:8080)
+- DBeaver (universel)
