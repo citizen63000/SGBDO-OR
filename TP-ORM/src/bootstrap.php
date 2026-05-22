@@ -6,8 +6,11 @@ error_reporting(E_ALL);
 
 require_once __DIR__.'/vendor/autoload.php';
 
-use Doctrine\ORM\Tools\Setup;
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMSetup;
+//use Doctrine\ORM\Tools\Setup;
+//use Doctrine\ORM\EntityManager;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -26,5 +29,18 @@ $dbParams = [
 'dbname'   => 'bibliotheque'
 ];
 
-$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-$entityManager = EntityManager::create($dbParams, $config);
+$config = ORMSetup::createAttributeMetadataConfig( // on PHP < 8.4, use ORMSetup::createAttributeMetadataConfiguration()
+    paths: [__DIR__ . '/src'],
+    isDevMode: true,
+);
+
+$connection = DriverManager::getConnection($dbParams, $config);
+$entityManager = new EntityManager($connection, $config);
+//$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+//$entityManager = EntityManager::create($dbParams, $config);
+
+function getTwig(): Environment
+{
+    // twig configuration
+    return new Environment(new FilesystemLoader('../templates'));
+}
