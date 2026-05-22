@@ -1,0 +1,6 @@
+<?php
+
+Abstract class personn
+{
+
+}

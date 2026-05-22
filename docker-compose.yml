@@ -9,6 +9,8 @@ services:
       - ORACLE_PASSWORD=MonPasswordSecurise123!
     volumes:
       - oracle_data:/opt/oracle/oradata
+    networks:
+        - local
 
   # Container PostgreSQL (Dernière version majeure officielle)
   postgres-db:
@@ -22,13 +24,15 @@ services:
       - POSTGRES_DB=cours_objet
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+        - local
 
   # Container pgAdmin 4
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: pgadmin_extensions_cours
     ports:
-      - "8080:80"
+      - "8081:80"
     environment:
       - PGADMIN_DEFAULT_EMAIL=prof@cours.fr
       - PGADMIN_DEFAULT_PASSWORD=admin
@@ -37,8 +41,26 @@ services:
       - pgadmin_data:/var/lib/pgadmin
     depends_on:
       - postgres-db
+    networks:
+        - local
+
+  # Container php
+  php-postgresl:
+    container_name: "php-postgresl"
+    build: TP-ORM/docker
+    depends_on:
+        - postgres-db
+    ports:
+       - 8080:80
+    volumes:
+       - ./TP-ORM/src:/var/www/app/
+    networks:
+        - local
 
 volumes:
   oracle_data:
   postgres_data:
   pgadmin_data:
+
+networks:
+    local:
