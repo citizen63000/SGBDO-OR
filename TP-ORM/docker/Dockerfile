@@ -5,12 +5,14 @@ RUN apt update && \
     apt dist-upgrade -y && \
     apt install -q -y \
         wget \
+        curl \
         unzip \
         apache2 \
         php \
         libapache2-mod-php \
         php-pgsql \
         php-zip \
+        php-xml \
         php-curl && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
@@ -32,6 +34,11 @@ RUN a2enmod rewrite headers && \
 # Création du répertoire de travail
 RUN mkdir -p /var/www/app && \
     chown -R www-data:www-data /var/www/app
+
+# Symfony installation
+RUN wget https://get.symfony.com/cli/installer -O - | bash
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
+RUN apt install -y symfony-cli
 
 WORKDIR /var/www/app
 
