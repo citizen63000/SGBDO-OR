@@ -1,3 +1,4 @@
 /TP-ORM/src/vendor/
 /TP-ORM/src/var/
 /.idea
+/TP-ORM/doctrine/update.sql
