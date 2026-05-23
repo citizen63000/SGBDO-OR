@@ -30,7 +30,7 @@ $dbParams = [
 ];
 
 $config = ORMSetup::createAttributeMetadataConfig( // on PHP < 8.4, use ORMSetup::createAttributeMetadataConfiguration()
-    paths: [__DIR__ . '/src'],
+    paths: [__DIR__ . '/src/Entity'],
     isDevMode: true,
 );
 

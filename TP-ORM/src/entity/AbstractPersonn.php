@@ -1,6 +1,0 @@
-<?php
-
-Abstract class personn
-{
-
-}
