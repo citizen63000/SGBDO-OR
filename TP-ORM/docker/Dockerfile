@@ -36,7 +36,7 @@ RUN mkdir -p /var/www/app && \
     chown -R www-data:www-data /var/www/app
 
 # Symfony installation
-RUN wget https://get.symfony.com/cli/installer -O - | bash
+# RUN wget https://get.symfony.com/cli/installer -O - | bash
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt install -y symfony-cli
 
