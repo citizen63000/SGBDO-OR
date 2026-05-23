@@ -9,13 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class BookController extends AbstractController
+class PersonController extends AbstractController
 {
-    #[Route('/')]
+    #[Route('/persons', name: 'persons')]
     public function list(EntityManagerInterface $entityManager): Response
     {
-        $books = $entityManager->getRepository(Book::class)->findAll();
+        $persons = $entityManager->getRepository(Book::class)->findAll();
 
-        return $this->render('books/index.html.twig', ['books' => $books]);
+        return $this->render('index.html.twig', ['persons' => $persons]);
     }
 }
