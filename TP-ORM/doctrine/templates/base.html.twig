@@ -7,7 +7,12 @@
     {% endblock %}
 </head>
 <body>
-<div class="header"><img class="logo" src="/assets/media/elephant.png"></div>
+<div class="header">
+    <img class="logo" src="/assets/media/elephant.png">
+    <a href="/">Livres</a>&nbsp;|&nbsp;
+    <a href="/authors">Auteurs</a>&nbsp;|&nbsp;
+    <a href="/readers">Lecteurs</a>
+</div>
 <div class="background"></div>
 <div id="content" class="content">{% block content %}{% endblock %}</div>
 <div id="footer">

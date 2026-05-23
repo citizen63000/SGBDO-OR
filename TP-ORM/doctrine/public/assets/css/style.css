@@ -1,17 +1,23 @@
 body {
-    background-color: #001E2B;
-    color: #B9B8B8;
+    background-color: #212121;
+    color: #ffffff;
     padding: 0;
     margin: 0;
 }
 .header {
-    height: 55px;
-    background-color: #B9B8B8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    height: 50px;
+    background-color: #212121;
     padding: 10px;
     margin: 0;
-}
-.header .logo {
-    height: 43px;
+    border-bottom: solid 1px #699eca;
+
+    .logo {
+        height: 43px;
+    }
 }
 .background {
     /*background-image: url("/assets/media/background.png");*/
@@ -41,7 +47,7 @@ td {
     padding: 10px;
 }
 a {
-    color: #B9B8B8;
+    color: #699eca;
 }
 .content {
     margin: 10px;
